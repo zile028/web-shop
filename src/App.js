@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Products from "./components/Products";
+export const productContext = React.createContext();
 
 function App() {
-  const productData = [];
-  fetch("https://fakestoreapi.com/products")
-    .then((resp) => resp.json())
-    .then((data) => [...productData, data]);
+  const [products, setProducts] = useState([]);
 
-  const [products, setProducts] = useState(productData);
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProducts(data);
+        data.map((el) => {
+          console.log(el.image);
+        });
+      });
+  }, []);
 
-  console.log(products);
-
-  return <h1>Web Shop</h1>;
+  return (
+    <>
+      <productContext.Provider value={products}>
+        <Products />
+      </productContext.Provider>
+    </>
+  );
 }
 
 export default App;
