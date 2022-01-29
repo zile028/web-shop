@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { productContext } from "../App";
+import Product from "./Product";
+// import "../css/Product.css";
 
 const Products = () => {
   const products = useContext(productContext);
@@ -10,9 +12,8 @@ const Products = () => {
       <div className="row">
         {products.map((el) => {
           return (
-            <div className="col-3">
-              <img className="img-fluid" src={el.image} alt="" />
-              <p>{el.title}</p>
+            <div className="col-md-3 mb-3" key={el.id}>
+              <Product data={el} />
             </div>
           );
         })}
