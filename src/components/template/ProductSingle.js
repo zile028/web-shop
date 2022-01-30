@@ -1,26 +1,26 @@
 import React, { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { cartContext } from "../App";
+import { cartContext } from "../../App";
 import "../css/Product.css";
 
 const Product = ({ data }) => {
-  const cart = useContext(cartContext);
-  let cardBtn = (id) => {
-    return (
-      <NavLink to={"/product/" + id} className="btn btn-sm btn-info">
-        DETAILS
-      </NavLink>
-    );
-  };
-  if (useParams().id) {
-    cardBtn = (id) => {
-      return (
-        <NavLink to={"/"} className="btn btn-sm btn-info">
-          HOME
-        </NavLink>
-      );
-    };
-  }
+  //   const cart = useContext(cartContext);
+  //   let cardBtn = (id) => {
+  //     return (
+  //       <NavLink to={"/product/" + id} className="btn btn-sm btn-info">
+  //         DETAILS
+  //       </NavLink>
+  //     );
+  //   };
+  //   if (useParams().id) {
+  //     cardBtn = (id) => {
+  //       return (
+  //         <NavLink to={"/"} className="btn btn-sm btn-info">
+  //           HOME
+  //         </NavLink>
+  //       );
+  //     };
+  //   }
 
   return (
     <div className="card">
@@ -35,7 +35,7 @@ const Product = ({ data }) => {
       </div>
       <div className="card-footer">
         <p>{data.price}</p>
-        {cardBtn(data.id)}
+        {/* {cardBtn(data.id)} */}
       </div>
     </div>
   );

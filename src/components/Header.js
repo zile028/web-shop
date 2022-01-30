@@ -32,9 +32,9 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <NavLink to="/cart">
-              <button class="btn btn-primary">
+              <button className="btn btn-primary">
                 <i className="fas fa-shopping-cart"></i>{" "}
-                <span class="badge badge-light">4</span>
+                <span className="badge badge-light">4</span>
               </button>
             </NavLink>
           </li>
