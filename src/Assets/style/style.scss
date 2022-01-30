@@ -1,0 +1,373 @@
+@import "variables";
+@import "basicStyle";
+@import "mixins";
+
+/*------- GLOBAL -------*/
+button {
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0 40px;
+  height: 4rem;
+  margin-top: 10px;
+  background-color: $green;
+  cursor: pointer;
+  transition: $transition;
+  &:hover {
+    background-color: $gray;
+    color: $white;
+  }
+}
+/*---------------------------------*/
+/* topBar */
+.topBar {
+  padding: 10px 0;
+  background-color: $lightgray;
+  article {
+    @include flex($y: center);
+    width: 95%;
+    margin: 0 auto;
+    @media (max-width: 769px) {
+      justify-content: flex-end;
+    }
+  }
+}
+
+/* nav */
+nav {
+  border-bottom: 5px solid $green;
+  width: 100%;
+  background-color: $white;
+  article {
+    width: 95%;
+    margin: 0 auto;
+    @include flex($y: center);
+    padding: 20px 0;
+    .brand {
+      flex: 1;
+      font-size: 2rem;
+      @media (max-width: 769px) {
+        flex: 0 0 50%;
+        order: 1;
+      }
+      span {
+        color: $green;
+        font-style: italic;
+        text-shadow: $textShadow;
+      }
+    }
+    .navigation {
+      @include flex($x: center);
+      flex: 1;
+      @media (max-width: 769px) {
+        flex: 0 0 100%;
+        margin: 20px 0 0;
+        order: 3;
+      }
+      li {
+        margin-right: 200px;
+        @media (max-width: 769px) {
+          margin-right: 40px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .icons {
+      @include flex($x: flex-end);
+      flex: 1;
+      @media (max-width: 769px) {
+        flex: 0 0 50%;
+        order: 2;
+      }
+      li {
+        margin-left: 20px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* header */
+header {
+  &.indexHeader {
+    @include flex(flex-start, center, column);
+    background-image: url(../img/header.jpg);
+    @include bgBasic;
+    height: 87vh;
+  }
+  article {
+    width: 95%;
+    margin: 0 auto;
+    @media (max-width: 769px) {
+      text-align: center;
+    }
+    h4 {
+      text-transform: uppercase;
+      font-size: 1.6rem;
+    }
+    h1 {
+      font-size: 4.5rem;
+      text-transform: capitalize;
+      line-height: 1;
+      margin: 5px 0 10px;
+      span {
+        color: $green;
+      }
+    }
+  }
+  &.otherHeader {
+    background-color: $lightgray;
+    text-align: center;
+    padding: 50px 0;
+    h1 {
+      font-size: 3rem;
+      color: $gray;
+    }
+  }
+}
+
+/* featured */
+.featured {
+  h2 {
+    text-align: center;
+    font-size: 3.2rem;
+  }
+  hr {
+    border: none;
+    background-color: $green;
+    margin: 40px auto;
+    height: 1px;
+    width: 200px;
+  }
+  article {
+    @include flex;
+    .wrapper {
+      flex: 0 0 30%;
+      box-shadow: $boxShadow;
+      @media (max-width: 769px) {
+        flex: 0 0 100%;
+        margin-bottom: 30px;
+      }
+      .image {
+        height: 300px;
+        padding: 5px;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          margin: 0 auto;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .text {
+        background-color: $white;
+        padding: 20px;
+        h3 {
+          font-size: 1.7rem;
+        }
+        p {
+          margin-top: 20px;
+          span {
+            color: $blue;
+            text-decoration: line-through;
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+/* footer */
+footer {
+  background-color: $blue;
+  color: $white;
+  article {
+    @include flex;
+    div {
+      flex: 0 0 33%;
+      &:last-child {
+        @media (max-width: 769px) {
+          flex: 0 0 100%;
+          margin-top: 30px;
+        }
+      }
+      h2 {
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+      }
+      ul {
+        li {
+          line-height: 2;
+        }
+      }
+      p {
+        line-height: 1.6;
+      }
+    }
+    form {
+      margin-top: 10px;
+      input {
+        padding: 10px 10px;
+        width: 210px;
+      }
+      button {
+        padding: 0 5px;
+        font-size: 0.9rem;
+        text-transform: none;
+        margin-left: -20px;
+        height: 2em;
+      }
+    }
+  }
+}
+
+/* bottomBar */
+.bottomBar {
+  @extend .topBar;
+  background-color: $green;
+  p {
+    text-transform: uppercase;
+  }
+  i {
+    margin-left: 20px;
+  }
+  button {
+    padding: 10px;
+  }
+}
+
+/* services */
+.services {
+  @include flex;
+  article {
+    flex: 0 0 23%;
+    border: 1px solid $gray;
+    box-shadow: $boxShadow;
+    color: $gray;
+    text-align: center;
+    padding: 30px;
+    @media (max-width: 769px) {
+      padding: 20px;
+      flex: 0 0 100%;
+      margin-bottom: 30px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    i {
+      color: $green;
+      font-size: 2rem;
+      text-shadow: $textShadow;
+    }
+    h2 {
+      margin: 20px 0;
+    }
+  }
+}
+
+/* dicount */
+.dicount {
+  background-image: url(../img/shop.jpg);
+  @include bgBasic;
+  height: 80vh;
+  border-top: 2px solid $green;
+  @media (max-width: 769px) {
+    background-position: 20% top;
+  }
+  article {
+    @include flex(flex-end, center, column);
+    height: 100%;
+    color: $gray;
+    padding: $py;
+    @media (max-width: 769px) {
+      text-align: center;
+    }
+    h4 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    h2 {
+      font-size: 6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 20px 0;
+    }
+    p {
+      margin-top: 20px;
+    }
+  }
+}
+
+/* products */
+.products {
+  @include flex($y: center);
+  height: 100vh;
+  @media (max-width: 769px) {
+    height: auto;
+  }
+  article {
+    flex: 0 0 49%;
+    color: $gray;
+    @media (max-width: 769px) {
+      flex: 0 0 100%;
+    }
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      color: $green;
+      text-shadow: $textShadow;
+    }
+    h6 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 20px;
+      span {
+        color: $blue;
+      }
+    }
+    hr {
+      border: none;
+      height: 2px;
+      width: 100%;
+      background: $gray;
+      margin: 20px 0;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    form {
+      div {
+        &:last-child {
+          margin-top: 20px;
+          @include flex(flex-start, stretch);
+          button {
+            &:not(:first-child) {
+              background-color: $white;
+              border: 1px solid $gray;
+              padding: 0;
+              width: 4rem;
+              margin-left: 10px;
+              &:hover {
+                background-color: $gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* header */
+/* header */

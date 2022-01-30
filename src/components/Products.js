@@ -10,7 +10,7 @@ const Products = () => {
   return (
     <div className="container">
       <h1>Web Shop</h1>
-      <div className="row">{allProducts}</div>
+      <div className="all-products row">{allProducts}</div>
     </div>
   );
 };
