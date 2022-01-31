@@ -21,10 +21,10 @@ const Navigation = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="shop.php">Shop</NavLink>
+              <NavLink to="/shop">Shop</NavLink>
             </li>
             <li>
-              <NavLink to="product.php">Product</NavLink>
+              <NavLink to="/products">Products</NavLink>
             </li>
           </ul>
           <ul className="icons">
