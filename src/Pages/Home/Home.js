@@ -1,18 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { productContext } from "../App";
-import Featured from "../Components/Featured/Featured";
-import Header from "../Components/Header/Header";
+import React, { useContext } from "react";
+import { productContext } from "../../App";
+import Featured from "../../Components/Featured/Featured";
+import Header from "./Header";
 
-const Home = () => {
+const Home = ({ data }) => {
   const products = useContext(productContext);
   let displayProduct = [];
   let indexArr = null;
   let article = [];
-
-  useEffect(() => {
-    console.log("test");
-  }, [products]);
-
+  console.log(products);
   if (products.length > 0) {
     for (let i = 0; i < 3; i++) {
       indexArr = Math.floor(Math.random() * products.length);
@@ -33,7 +29,7 @@ const Home = () => {
         <hr />
         <article>{displayProduct}</article>
       </section>
-      {/* <Featured /> */}
+      <Featured />
     </>
   );
 };
