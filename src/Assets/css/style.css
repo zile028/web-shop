@@ -172,6 +172,14 @@ nav article .navigation li:last-child {
   margin-right: 0;
 }
 
+nav article .navigation li a {
+  border-bottom: 3px solid transparent;
+}
+
+nav article .navigation li .active {
+  border-bottom: 3px solid #4831d4;
+}
+
 nav article .icons {
   display: flex;
   flex-wrap: wrap;
@@ -263,23 +271,26 @@ header.otherHeader h1 {
 }
 
 .featured article {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+@media (max-width: 1300px) {
+  .featured article {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 769px) {
+  .featured article {
+    grid-template-columns: 1fr;
+  }
 }
 
 .featured article .wrapper {
   flex: 0 0 30%;
   box-shadow: 0 0px 10px 0px #b7b6b6;
-}
-
-@media (max-width: 769px) {
-  .featured article .wrapper {
-    flex: 0 0 100%;
-    margin-bottom: 30px;
-  }
 }
 
 .featured article .wrapper .image {
@@ -506,6 +517,11 @@ footer article form button {
   }
 }
 
+.products article img {
+  max-height: 600px;
+  object-fit: contain;
+}
+
 .products article h2 {
   font-size: 3rem;
   margin-bottom: 20px;
@@ -540,7 +556,7 @@ footer article form button {
   margin-bottom: 20px;
 }
 
-.products article form div:last-child {
+.products article .form div:last-child {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -549,7 +565,7 @@ footer article form button {
   align-items: stretch;
 }
 
-.products article form div:last-child button:not(:first-child) {
+.products article .form div:last-child button:not(:first-child) {
   background-color: #fff;
   border: 1px solid #333;
   padding: 0;
@@ -557,7 +573,7 @@ footer article form button {
   margin-left: 10px;
 }
 
-.products article form div:last-child button:not(:first-child):hover {
+.products article .form div:last-child button:not(:first-child):hover {
   background-color: #333;
 }
 

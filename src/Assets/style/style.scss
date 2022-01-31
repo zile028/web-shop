@@ -73,6 +73,12 @@ nav {
         &:last-child {
           margin-right: 0;
         }
+        a {
+          border-bottom: 3px solid transparent;
+        }
+        .active {
+          border-bottom: 3px solid $blue;
+        }
       }
     }
     .icons {
@@ -145,14 +151,19 @@ header {
     width: 200px;
   }
   article {
-    @include flex;
+    // @include flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    @media (max-width: 1300px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 769px) {
+      grid-template-columns: 1fr;
+    }
     .wrapper {
       flex: 0 0 30%;
       box-shadow: $boxShadow;
-      @media (max-width: 769px) {
-        flex: 0 0 100%;
-        margin-bottom: 30px;
-      }
       .image {
         height: 300px;
         padding: 5px;
@@ -319,6 +330,10 @@ footer {
     @media (max-width: 769px) {
       flex: 0 0 100%;
     }
+    img {
+      max-height: 600px;
+      object-fit: contain;
+    }
     h2 {
       font-size: 3rem;
       margin-bottom: 20px;
@@ -347,7 +362,7 @@ footer {
       line-height: 1.6;
       margin-bottom: 20px;
     }
-    form {
+    .form {
       div {
         &:last-child {
           margin-top: 20px;
