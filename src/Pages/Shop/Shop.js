@@ -1,11 +1,16 @@
 import React from "react";
-import Header from "./Header";
+import PageHeader from "../../Components/Header/PageHeader";
 import Services from "./Services";
 
 const Shop = () => {
+  const content = {
+    title: "Shop",
+    text:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, vero!",
+  };
   return (
     <>
-      <Header />
+      <PageHeader content={content} />
       <Services />
     </>
   );

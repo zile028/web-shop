@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { cartContext } from "../../App";
 
-const Navigation = () => {
+const Navigation = ({ cart }) => {
+  console.log(cart.length);
   return (
     <>
       <section className="topBar">
@@ -34,8 +36,9 @@ const Navigation = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="#">
+              <NavLink to="/cart">
                 <i className="fas fa-shopping-cart"></i>
+                <span>{cart.length}</span>
               </NavLink>
             </li>
             <li>

@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { addCartContext, productContext } from "../../App";
 
 const Article = () => {
   const slug = parseInt(useParams().id);
   const products = useContext(productContext);
   const addCart = useContext(addCartContext);
+  const nav = useNavigate();
   const product = products.filter((el) => {
     return el.id === slug;
   })[0];
+  const [myCart, setMyCart] = useState({
+    id: slug,
+    quantity: 0,
+    article: product,
+  });
 
   const addToCart = () => {
-    addCart();
+    addCart(myCart);
+    nav("/products");
   };
 
   return (
@@ -34,7 +41,12 @@ const Article = () => {
         <div className="form">
           <div>
             <label htmlFor="quantity">Quantity:</label>
-            <select name="quantity">
+            <select
+              name="quantity"
+              onChange={(e) => {
+                setMyCart({ ...myCart, quantity: e.target.value });
+              }}
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
