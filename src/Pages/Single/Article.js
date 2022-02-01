@@ -17,8 +17,10 @@ const Article = () => {
   });
 
   const addToCart = () => {
-    addCart(myCart);
-    nav("/products");
+    if (myCart.quantity > 0) {
+      addCart(myCart);
+      nav("/products");
+    }
   };
 
   return (

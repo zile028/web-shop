@@ -21,7 +21,7 @@ const Cart = () => {
   return (
     <>
       <PageHeader content={content} />
-      <section className="conatiner py">{myArticle}</section>
+      <section className="cart container py">{myArticle}</section>
     </>
   );
 };
