@@ -12,6 +12,7 @@ import Cart from "./Pages/Cart/Cart";
 export const productContext = React.createContext();
 export const cartContext = React.createContext();
 export const addCartContext = React.createContext();
+export const actionCartContext = React.createContext();
 
 const test = [
   {
@@ -69,17 +70,13 @@ const test = [
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState(test);
+  const [cart, setCart] = useState([]);
 
-  function addCart(data) {
-    setCart([...cart, data]);
-  }
   useEffect(() => {
     setProducts(db);
     return () => {};
   }, []);
 
-  console.log(cart);
   // useEffect(() => {
   //   fetch("https://fakestoreapi.com/products")
   //     .then((resp) => resp.json())
@@ -90,6 +87,18 @@ function App() {
   //       console.log(err.message);
   //     });
   // }, []);
+
+  const cartAction = {
+    add: (data) => {
+      setCart([...cart, data]);
+    },
+    removeCart: (data) => {
+      let newCart = cart.filter((el) => {
+        return el.article.id !== data;
+      });
+      setCart([...newCart]);
+    },
+  };
 
   return (
     <BrowserRouter>
@@ -117,9 +126,9 @@ function App() {
           path="/products/:id"
           element={
             <productContext.Provider value={products}>
-              <addCartContext.Provider value={addCart}>
+              <actionCartContext.Provider value={cartAction}>
                 <Article />
-              </addCartContext.Provider>
+              </actionCartContext.Provider>
             </productContext.Provider>
           }
         />
@@ -128,7 +137,9 @@ function App() {
           path="/cart"
           element={
             <cartContext.Provider value={cart}>
-              <Cart />
+              <actionCartContext.Provider value={cartAction}>
+                <Cart />
+              </actionCartContext.Provider>
             </cartContext.Provider>
           }
         />

@@ -1,15 +1,17 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addCartContext, productContext } from "../../App";
+import { actionCartContext, productContext } from "../../App";
 
 const Article = () => {
   const slug = parseInt(useParams().id);
   const products = useContext(productContext);
-  const addCart = useContext(addCartContext);
+  const addCart = useContext(actionCartContext);
   const nav = useNavigate();
+
   const product = products.filter((el) => {
     return el.id === slug;
   })[0];
+
   const [myCart, setMyCart] = useState({
     id: slug,
     quantity: 0,
@@ -18,7 +20,7 @@ const Article = () => {
 
   const addToCart = () => {
     if (myCart.quantity > 0) {
-      addCart(myCart);
+      addCart.add(myCart);
       nav("/products");
     }
   };

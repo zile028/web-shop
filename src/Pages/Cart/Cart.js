@@ -8,10 +8,12 @@ const Cart = () => {
     text:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, vero!",
   };
+
   const myCart = useContext(cartContext);
   let total = 0;
+
   const myArticle = myCart.map((el) => {
-    total += el.article.price;
+    total += parseFloat(el.article.price) * parseInt(el.quantity);
     return (
       <SelectedArticle
         article={el.article}
@@ -20,6 +22,7 @@ const Cart = () => {
       />
     );
   });
+
   return (
     <>
       <PageHeader content={content} />
@@ -27,7 +30,10 @@ const Cart = () => {
         {myArticle}
         <article className="total">
           <p>
-            Total: <span>{String.fromCodePoint(0x00024) + " " + total}</span>
+            Total:{" "}
+            <span>
+              {String.fromCodePoint(0x00024) + " " + total.toFixed(2)}
+            </span>
           </p>
         </article>
       </section>

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { actionCartContext } from "../../App";
 
 const SelectedArticle = ({ article, quantity }) => {
+  const cartAction = useContext(actionCartContext);
+
   const removeArticle = (id) => {
-    console.log("remove" + id);
+    cartAction.removeCart(id);
+    // console.log("remove" + id);
   };
   return (
     <article className="cart-article">

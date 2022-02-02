@@ -1,9 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { cartContext } from "../../App";
 
 const Navigation = ({ cart }) => {
-  console.log(cart.length);
   return (
     <>
       <section className="topBar">

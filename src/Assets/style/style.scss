@@ -389,7 +389,6 @@ CART
 *************/
 .cart {
   &-article {
-    // @include flex;
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 200px;
@@ -398,9 +397,6 @@ CART
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
-    div {
-      // border: 1px solid $blue;
-    }
     h2 {
       padding: 5px;
       background-color: rgba($green, 1);
